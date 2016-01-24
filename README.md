@@ -1,1 +1,1 @@
-Exercise
+The final exercise for the course Morphological tools I at the University of Helsinki. This "program" was made with HFST (Helsinki Finite-State Transducer Technology), of which you can find more information [here](https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstHome). The program produces a set of French adjectives with different kind of inflections.
