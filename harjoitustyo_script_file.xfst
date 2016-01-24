@@ -1,0 +1,33 @@
+! tämä tiedosto aukeaa joko komennolla
+! hfst-xfst --scriptfile=harjoitustyo_script_file.xfst
+! TAI
+! hfst-xfst --startupfile=harjoitustyo_script_file.xfst
+
+read lexc harjoitustyo.lexc
+
+! määritetään sanat
+define words ;
+
+! tämä säännöllinen lauseke poistaa ylimääräiset f:t (jos niissä on v), korvaa
+! beaue-muodon bellellä ja poistaa ylimääräiset e:t e-päätteisiltä sanoilta
+regex words .o. {f} -> 0 || _ {v} .o. {beaue} -> {belle} .o. {e} -> 0 || _ {e} ;
+
+echo
+echo Leksikko analyyseineen:
+words
+
+echo
+echo Välimuodot:
+upper-words
+
+echo
+echo Oikeat muodot sanoille:
+lower-words
+
+! Oikea palautus olisi siis näin joka sanalle:
+! grand (Mask), grande (Fem), grands (MaskMon), grandes (FemMon)
+! petit (Mask), petite (Fem), petits (MaskMon), petites (FemMon)
+! beau (Mask), belle (Fem), beaux (MaskMon), belles (FemMon)
+! relatif (Mask), relative (Fem), relatifs (MaskMon), relatives (FemMon)
+! jeune (Mask), jeune (Fem), jeunes (MaskMon), jeunes (FemMon)
+! (järjestys tosin vaihtelee palautettaessa)

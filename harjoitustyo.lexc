@@ -1,0 +1,55 @@
+! Tässä harjoitustyössä käyn läpi ranskan kielen adjektiivien taivutusta
+! (adjektiivit taipuvat maskuliinissa ja feminiinissä sekä niiden
+! monikkomuodoissa). Näissä taivutuksissa on joitakin erikoistapauksia, jotka
+! käsitellään tämän leksikon ja skriptitiedoston avulla.
+
+
+! tässä luon symbolit, joiden avulla tiedetään, mitä muotoja/merkkijonoja
+! lisätään sanoihin
+Multichar_Symbols
+	+Mask +Fem +MaskMon +FemMon
+
+LEXICON Root
+	Sana ;
+
+! leksikon sanat, jotka menevät kukin omaan taivutusluokkaansa
+LEXICON Sana
+	grand:grand	Taivutus ;
+	petit:petit	Taivutus ;
+	beau:beau	Taivutus_au ;
+	relatif:relatif	Taivutus_f ;
+	jeune:jeune	Taivutus ;
+
+! Lisätietoa taivutuksista:
+! - grand ja petit taipuvat normaalisti
+! - beausta tulee belle feminiinin yksikössä
+! - jos sana päättyy au:hon yksikön maskuliinissa, tulee monikossa x eikä s
+! - jos sana päättyy f, tulee tilalle v feminiinin yksikössä ja monikossa
+! - jos sana päättyy yksikössä e:hen, feminiini ja maskuliini ovat samanmuotoiset,
+! eikä monikossa tehdä eroja sukujen välillä
+
+! tässä yleinen taivutuskaava, jota normaalisti taipuvat adjektiivit käyttävät
+LEXICON Taivutus
+	# ;
+	+Mask:0		# ;
+	+Fem:e		# ;
+	+MaskMon:s	# ;
+	+FemMom:es	# ;
+
+! tämä on taivutuskaava au-päätteisille
+LEXICON Taivutus_au
+	# ;
+	+Mask:0		# ;
+	+Fem:e		# ;
+	+MaskMon:x	# ;
+	+FemMon:es	# ;
+
+! taivutuskaava f-päätteisille
+LEXICON Taivutus_f
+	# ;
+	+Mask:0		# ;
+	+Fem:ve		# ;
+	+MaskMon:s	# ;
+	+FemMon:ves	# ;
+
+! loput virheelliset muodot on hoidettu skriptitiedostossa
